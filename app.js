@@ -8,7 +8,7 @@
 //     const ph_no = e.target.ph_no.value;
 //     const date = e.target.date.value;
     // localStorage.setItem('name', name)
-    localStorage.setItem('email', email)
+    // localStorage.setItem('email', email)
 //     localStorage.setItem('ph_no', ph_no)
 //     localStorage.setItem('date', date)
 // }
@@ -44,11 +44,17 @@ function addData(e){
     console.log(obj_serialized);
 
     localStorage.setItem('myObj', obj_serialized);
-    // console.log(localStorage);
+    // console.log(localStorage.length);
 
     // let obj_deserialized = JSON.parse(localStorage.getItem(obj));
     // console.log(obj_deserialized);
+
+    let val = Object.values(obj);
+    console.log(val);
+    document.getElementById('users').innerHTML = val;
+    
 }
+
 
 
 
