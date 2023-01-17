@@ -49,10 +49,18 @@ function addData(e){
     // let obj_deserialized = JSON.parse(localStorage.getItem(obj));
     // console.log(obj_deserialized);
 
-    let val = Object.values(obj);
-    console.log(val);
-    document.getElementById('users').innerHTML = val;
-    
+    // let val = Object.values(obj);
+    // console.log(val);
+    // document.getElementById('users').innerHTML = val;
+     
+        const parentele = document.getElementById('users');
+
+        // parentele.innerHTML = parentele + `<li> ${obj.name} - ${obj.email} - ${obj.ph_no} - ${obj.date} </li>`
+        // let li = document.createElement('li');
+        // console.log(li);
+        // li.textContent = obj.name +  ' - ' + obj.email + ' - ' + obj.ph_no + ' - ' + obj.date;
+        // parentele.appendChild(li);
+        // console.log(parentele);
 }
 
 
