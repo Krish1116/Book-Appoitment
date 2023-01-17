@@ -1,66 +1,45 @@
-// let submit = document.getElementById('my-form');
-// submit.addEventListener('submit', addData);
-
-// function addData(e){
-//     e.preventDefault();
-    // const name = e.target.name.value;
-//     const email = e.target.email.value;
-//     const ph_no = e.target.ph_no.value;
-//     const date = e.target.date.value;
-    // localStorage.setItem('name', name)
-    // localStorage.setItem('email', email)
-//     localStorage.setItem('ph_no', ph_no)
-//     localStorage.setItem('date', date)
-// }
-
 let submit = document.getElementById('my-form');
+let name = document.getElementById('name');
+let email = document.getElementById('email');
+let ph_no = document.getElementById('ph_no');
+let date = document.getElementById('date');
 submit.addEventListener('submit', addData);
 
+let obj = [];
 function addData(e){
     window.localStorage.clear();
     e.preventDefault();
 
-    let name = document.getElementById('name').value;
-    localStorage.useName = name;
-         
-    let email = document.getElementById('email').value;
-    localStorage.userEmail = email;
+    let name = e.target.name.value;
+    let email = e.target.email.value;
+    let ph_no = e.target.ph_no.value;
+    let date = e.target.date.value;
+
+    let myObj = {name, email, ph_no, date}
+    obj.push(myObj);
+    localStorage.setItem(email, JSON.stringify(obj));
     
-    let ph_no = document.getElementById('ph_no').value;
-    localStorage.userPhone = ph_no;
+    showOn(myObj);
 
-    let date = document.getElementById('date').value;
-    localStorage.userDate = date;
-    // console.log(localStorage);
+}
 
-    let obj = {
-        name,
-        email,
-        ph_no,
-        date
+function showOn(myObj){
+    const parentele = document.getElementById('users');
+    let li = document.createElement('li');
+    li.textContent = myObj.name + ' - ' + myObj.email + ' - ' + myObj.ph_no + ' - ' + myObj.date;
+    
+    const dltbtn = document.createElement('input');
+    dltbtn.type = 'button';
+    dltbtn.value = 'Delete';
+    dltbtn.className = 'btn';
+    console.log(dltbtn);
+    li.appendChild(dltbtn);
+    parentele.appendChild(li);
+
+    dltbtn.onclick = () => {
+        localStorage.removeItem(myObj.email);
+        parentele.removeChild(li);
     }
-
-    let obj_serialized = JSON.stringify(obj); //converting it into some form of readable data
-    console.log(obj_serialized);
-
-    localStorage.setItem('myObj', obj_serialized);
-    // console.log(localStorage.length);
-
-    // let obj_deserialized = JSON.parse(localStorage.getItem(obj));
-    // console.log(obj_deserialized);
-
-    // let val = Object.values(obj);
-    // console.log(val);
-    // document.getElementById('users').innerHTML = val;
-     
-        const parentele = document.getElementById('users');
-
-        // parentele.innerHTML = parentele + `<li> ${obj.name} - ${obj.email} - ${obj.ph_no} - ${obj.date} </li>`
-        // let li = document.createElement('li');
-        // console.log(li);
-        // li.textContent = obj.name +  ' - ' + obj.email + ' - ' + obj.ph_no + ' - ' + obj.date;
-        // parentele.appendChild(li);
-        // console.log(parentele);
 }
 
 
