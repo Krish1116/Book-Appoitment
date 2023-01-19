@@ -20,7 +20,8 @@ function addData(e){
     localStorage.setItem(email, JSON.stringify(obj));
     
     showOn(myObj);
-
+    document.rst.reset();
+     
 }
 
 function showOn(myObj){
@@ -31,17 +32,49 @@ function showOn(myObj){
     const dltbtn = document.createElement('input');
     dltbtn.type = 'button';
     dltbtn.value = 'Delete';
-    dltbtn.className = 'btn';
-    console.log(dltbtn);
+    dltbtn.className = 'button';
+    // console.log(dltbtn);
     li.appendChild(dltbtn);
     parentele.appendChild(li);
 
     dltbtn.onclick = () => {
         localStorage.removeItem(myObj.email);
-        parentele.removeChild(li);
+        parentele.removeChild(li); 
     }
-}
+    
+    const edtbtn = document.createElement('input');
+    edtbtn.type = 'submit';
+    edtbtn.value = 'Edit';
+    edtbtn.className = 'button-3';
+    edtbtn.id = 'myId'
+    // console.log(li);
+    
+    
+    // edtbtn.onclick = (ev) => {
 
+    //     localStorage.removeItem(myObj.email);
+    //     parentele.removeChild(li);
+
+    //     document.getElementById('name').value = name;
+    //     document.getElementById('email').value = email;
+    //     document.getElementById('ph_no').value = ph_no;
+    //     document.getElementById('date').value = date;
+    // }
+    li.appendChild(edtbtn);
+
+    edtbtn.addEventListener('click', function() {
+        // li.contentEditable = true;
+        // myObj.style.backgroundColor = '#dddbdb';
+        localStorage.removeItem(myObj.email);
+        parentele.removeChild(li);
+
+        document.getElementById('name').value = name;
+        document.getElementById('email').value = email;
+        document.getElementById('ph_no').value = ph_no;
+        document.getElementById('date').value = date;
+    })
+ 
+}
 
 
 
